@@ -1,0 +1,40 @@
+class Solution:
+    def search(self, nums: List[int], target: int) -> int:
+
+        index = -1
+
+        l, r = 0, len(nums) - 1
+        minIndex = -1
+        while l < r: 
+
+            mid = (r + l) // 2
+
+            if (nums[mid] > nums[r]):
+                l = mid + 1
+
+            else: 
+                r = mid
+        minIndex = l
+
+        if (target > nums[len(nums) - 1]):
+            left, right = 0, minIndex - 1
+        else: 
+            left, right = minIndex, len(nums) - 1
+
+        
+        while left <= right:
+            middle = (right + left) // 2
+
+            if (nums[middle] > target):
+                right = middle - 1
+            elif (nums[middle] < target):
+                left = middle + 1
+            else:
+                return middle
+
+        return -1
+
+
+
+
+        
